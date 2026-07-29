@@ -6,7 +6,7 @@ Android application for reading NFC tags containing person names, maintaining a 
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-Current release: **v1.7.0**
+Current public sideload release: **v1.7.0**
 
 [Version-specific v1.7.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.7.0.apk)
 
@@ -35,6 +35,11 @@ The previously shared `NFC-People-Logger-latest.apk` link is retained and points
 - Sessions containing reads keep the existing XLSX export workflow unchanged.
 - Retains the Runners of Bucharest launcher icon, NFC reading, live list, vibration behavior, duplicate-tag handling, database, and Excel workbook format.
 - Uses the same signing certificate, allowing direct installation over v1.6.0 without uninstalling.
+
+## Privacy and support
+
+- [Privacy policy](PRIVACY.md)
+- [Support and issue reporting](SUPPORT.md)
 
 ## Notes
 
