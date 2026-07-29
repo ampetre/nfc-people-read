@@ -6,9 +6,9 @@ Android application for reading NFC tags containing person names, maintaining a 
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-Current public sideload release: **v1.7.0**
+Current public sideload release: **v1.8.0**
 
-[Version-specific v1.7.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.7.0.apk)
+[Version-specific v1.8.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.8.0.apk)
 
 The previously shared `NFC-People-Logger-latest.apk` link is retained and points to the same current APK.
 
@@ -22,19 +22,20 @@ The previously shared `NFC-People-Logger-latest.apk` link is retained and points
 
 ## Version
 
-- Version: **1.7.0**
+- Version: **1.8.0**
 - Package: `com.andrei.nfcpeople`
 - Minimum Android version: Android 8.0
-- SHA-256: `9a2c0b0f59120905293841ae41b77de30c4d1688ae5ca73c809e229969f4de59`
+- SHA-256: `63e71882313993e6a7fd1081c80c5004aaeb2134c3d46297c6da7b1c551ee6f3`
 
-## Changes in v1.7.0
+## Changes in v1.8.0
 
-- Renames the launcher and in-app title to **RoB NFC tag reader**.
-- Changes the suggested Excel filename to `RoB_NFC_tag_reader_YYYY-MM-DD.xlsx`.
-- Allows a started session with zero NFC reads to be closed after confirmation, without creating an Excel file.
-- Sessions containing reads keep the existing XLSX export workflow unchanged.
-- Retains the Runners of Bucharest launcher icon, NFC reading, live list, vibration behavior, duplicate-tag handling, database, and Excel workbook format.
-- Uses the same signing certificate, allowing direct installation over v1.6.0 without uninstalling.
+- Excel rows are sorted alphabetically by the person name read from the NFC tag.
+- Sorting is case-insensitive and uses Romanian-aware collation.
+- The exported `No.` column is renumbered from 1 to N in alphabetical order.
+- Original scan date and time remain attached to each exported person.
+- The live reader and review screens remain in chronological scan order.
+- NFC reading, vibration feedback, duplicate-tag handling, empty-session closing, database storage, app icon and workbook structure remain unchanged from v1.7.0.
+- Uses the same signing certificate, allowing direct installation over v1.7.0 without uninstalling.
 
 ## Privacy and support
 
