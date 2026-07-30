@@ -1,47 +1,70 @@
-# RoB NFC tag reader
+# NFC tag reader applications
 
-Android application for reading NFC tags containing person names, maintaining a live attendance list, and exporting the completed daily list to Excel (`.xlsx`).
+This repository provides two Android variants built from the same NFC session and Excel-export foundation.
 
-## Download the latest version
+## 1. RoB NFC tag reader
+
+Customized for Runners of Bucharest:
+
+- RoB name and logo
+- Excel rows sorted alphabetically by the NFC person name
+- Romanian-aware, case-insensitive sorting
+- Package: `com.andrei.nfcpeople`
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-Current public sideload release: **v1.8.0**
+[Version-specific RoB v1.8.1 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.8.1.apk)
 
-[Version-specific v1.8.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.8.0.apk)
+The previously shared `NFC-People-Logger-latest.apk` URL is retained and downloads the same current RoB APK.
 
-The previously shared `NFC-People-Logger-latest.apk` link is retained and points to the same current APK.
+## 2. NFC to Excel tag reader
+
+Generic version prepared for public distribution and Google Play:
+
+- generic NFC-to-Excel name and logo
+- Excel rows retained in chronological/original scan order
+- separate package so it can coexist with the RoB app
+- Package: `com.andrei.nfctoexceltagreader`
+
+[**Download NFC to Excel tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/NFC-to-Excel-tag-reader-latest.apk)
+
+[Version-specific generic v1.8.1 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/NFC-to-Excel-tag-reader-v1.8.1.apk)
+
+## Current version
+
+Both variants are currently **v1.8.1** and show this footer on every app screen:
+
+`Version 1.8.1 • © andreimariuspetre`
+
+### RoB APK verification
+
+- SHA-256: `5f22dd0d991381a21db9943b8840c9857b258498bbbd09fb4909217f2af60986`
+
+### Generic APK verification
+
+- SHA-256: `3dd485b6d26d844563e1b83111443227ed4a40a99bf4bbe35b3c09c5579c8c33`
 
 ## Installation
 
-1. Download the APK on an Android phone.
+1. Download the required APK on an Android phone.
 2. Open the downloaded file.
-3. When Android asks, allow installation from the browser or file manager being used.
-4. Install and open **RoB NFC tag reader**.
-5. Enable NFC from the app's **NFC Settings** button when needed.
+3. Allow installation from the browser or file manager when Android requests it.
+4. Open the app and enable NFC when needed.
 
-## Version
-
-- Version: **1.8.0**
-- Package: `com.andrei.nfcpeople`
-- Minimum Android version: Android 8.0
-- SHA-256: `63e71882313993e6a7fd1081c80c5004aaeb2134c3d46297c6da7b1c551ee6f3`
-
-## Changes in v1.8.0
-
-- Excel rows are sorted alphabetically by the person name read from the NFC tag.
-- Sorting is case-insensitive and uses Romanian-aware collation.
-- The exported `No.` column is renumbered from 1 to N in alphabetical order.
-- Original scan date and time remain attached to each exported person.
-- The live reader and review screens remain in chronological scan order.
-- NFC reading, vibration feedback, duplicate-tag handling, empty-session closing, database storage, app icon and workbook structure remain unchanged from v1.7.0.
-- Uses the same signing certificate, allowing direct installation over v1.7.0 without uninstalling.
+Minimum supported version: Android 8.0.
 
 ## Privacy and support
 
+### RoB version
+
 - [Privacy policy](PRIVACY.md)
-- [Support and issue reporting](SUPPORT.md)
+- [Support](SUPPORT.md)
+
+### NFC to Excel version
+
+- [Privacy policy](PRIVACY_NFC_TO_EXCEL.md)
+- [Support](SUPPORT_NFC_TO_EXCEL.md)
 
 ## Notes
 
-This APK is distributed outside Google Play. Android may display a warning before installation. Only install the APK from this repository.
+These APKs are distributed outside Google Play. Android may display an installation warning. Only install files obtained from this repository.
