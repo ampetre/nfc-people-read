@@ -8,52 +8,56 @@ Customized for Runners of Bucharest.
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-[Version-specific RoB v2.0.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.0.apk)
+[Version-specific RoB v2.0.1 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.1.apk)
 
-The previously shared `NFC-People-Logger-latest.apk` URL is retained and downloads the exact same current RoB APK.
+The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current RoB APK.
 
 ### Current RoB version
 
-- Version: **2.0.0**
-- Internal version code: **21**
+- Version: **2.0.1**
+- Internal version code: **22**
 - Package: `com.andrei.nfcpeople`
-- SHA-256: `7379b9ff279c16809a30105984e911851c19435945693b910a43b290d64b7987`
-- Footer: `Version 2.0.0 • © andreimariuspetre`
+- SHA-256: `1101186ca87e7cb9018bc83872fb1e9f5d97b655907d0862992e3bdf1ebe214c`
+- Footer: `Version 2.0.1 • © andreimariuspetre`
 
-### What is in v2.0.0
+### v2.0.1 interaction changes
 
-- **Add manually** inserts a person directly into the same active list as NFC reads.
-- Manual entries use the current timestamp and immediately update the live list and counter.
-- Tap an entry while the session is active for correction options.
-- **Manual entries can be edited** before the session is finalized.
-- **Any non-finalized entry can be deleted**, whether it came from an NFC scan or manual input.
-- Deletion uses **one confirmation dialog**.
-- The confirmation message is: `Do you want to remove the name "Name" from the list?`, with the selected name shown in **bold**.
-- Confirmation buttons are **Yes, remove it from the list** and **No**.
-- If a scanned row is deleted, its short NFC repeat guard is cleared so the same tag can be scanned again immediately.
+- A **single tap on an entry does nothing**.
+- **Long-press an entry** to open its available actions.
+- Manual entries offer **Edit name** and **Delete entry**.
+- NFC-scanned entries offer **Delete entry** only.
+- The same long-press behavior is used while reviewing a non-finalized session.
+- Manual Add/Edit fields use Android **capitalize words** input behavior plus autocorrect, so names start with a capital and the keyboard automatically offers a capital after whitespace for the next name part.
+- Deletion keeps the single English confirmation dialog with the selected name bolded:
+  `Do you want to remove the name "Name" from the list?`
+- Confirmation buttons remain **Yes, remove it from the list** and **No**.
+
+### Existing behavior preserved
+
+- Manual entries share the same active list as NFC scans.
+- Manual entries can be edited before finalization.
+- Scanned and manual rows can both be deleted before finalization.
+- Excel contains a **Source** column with `Scan` or `Manual`.
+- RoB Excel output remains Romanian-aware, case-insensitive alphabetical order.
+- Original date/time stays attached to each entry.
+- NFC repeat protection, rapid reads of different tags, vibration behavior, live counter, pause/resume, session persistence, empty-session closure, Excel compatibility, RoB branding and responsive/Fold layouts remain unchanged.
 - Finalized sessions remain read-only.
-- Excel exports include a **Source** column:
-  - `Scan` for NFC entries
-  - `Manual` for manually entered entries
-- RoB Excel output remains alphabetically sorted by person name using Romanian-aware, case-insensitive sorting.
-- Each row keeps its original date and time.
-- Existing NFC vibration behavior, rapid reads of different tags, empty-session closing, session persistence, Excel compatibility, RoB branding, responsive/Fold layout, package ID and signing identity are preserved.
 
 ### Upgrade compatibility
 
-The regenerated v2.0.0 APK was explicitly checked against the published RoB v1.8.1 APK:
+The v2.0.1 build was explicitly validated against both previous published builds:
 
-- v1.8.1: package `com.andrei.nfcpeople`, versionCode **10**
-- v2.0.0 regenerated build: package `com.andrei.nfcpeople`, versionCode **21**
-- Both use the same signing certificate
+- v1.8.1: versionCode **10**
+- v2.0.0: versionCode **21**
+- v2.0.1: versionCode **22**
 
-It can therefore be installed directly over RoB v1.8.x without uninstalling the app, preserving existing app data.
+All use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.1 installs directly over v1.8.x or v2.0.0 without uninstalling and preserves existing app data.
 
-[Download RoB v2.0.0 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.0-source.zip)
+[Download RoB v2.0.1 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.1-source.zip)
 
 ## NFC to Excel tag reader
 
-The generic Google Play variant is maintained separately and is not changed by this RoB release.
+The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.1 release.
 
 ## Privacy and support
 
@@ -64,7 +68,3 @@ The generic Google Play variant is maintained separately and is not changed by t
 ### Generic version
 - [Privacy policy](PRIVACY_NFC_TO_EXCEL.md)
 - [Support](SUPPORT_NFC_TO_EXCEL.md)
-
-## Installation
-
-Download the RoB APK on Android and install it over the previous RoB version. The package name and signing identity are unchanged, so Android treats this regenerated v2.0.0 as an update and existing RoB application data is preserved.
