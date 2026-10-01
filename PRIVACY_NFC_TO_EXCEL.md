@@ -9,17 +9,18 @@ NFC to Excel tag reader is an offline Android application used to read NFC tags,
 The app may process the following information locally on the user’s device:
 
 - text read from NFC tags
+- names or text entered manually during an active session
 - session dates and scan times
 - locally stored session history
 - Excel files created by the user through the export function
 
 ## How data is used
 
-The app uses this information only to display scanned entries, maintain and review local sessions, and create an Excel export selected by the user.
+The app uses this information only to display NFC-scanned and manually entered entries, maintain and review local sessions, and create an Excel export selected by the user.
 
 ## Data collection and sharing
 
-The app does not send scanned data to the developer or to third parties. It does not include advertising, analytics, account, or tracking SDKs. It has no Internet permission.
+The app does not send NFC-scanned or manually entered data to the developer or to third parties. It does not include advertising, analytics, account, or tracking SDKs. It has no Internet permission.
 
 ## Data storage
 
