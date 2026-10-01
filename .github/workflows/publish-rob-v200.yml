@@ -32,63 +32,8 @@ jobs:
           cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0.apk download/NFC-People-Logger-latest.apk
           cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0-source.zip source/RoB-NFC-tag-reader-v2.0.0-source.zip
 
-          cat > README.md <<'EOF'
-# NFC tag reader applications
-
-## RoB NFC tag reader
-
-Customized for Runners of Bucharest.
-
-[**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
-
-[Version-specific RoB v2.0.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.0.apk)
-
-The legacy `NFC-People-Logger-latest.apk` URL is retained and downloads the same current RoB APK.
-
-### Current RoB version
-
-- Version: **2.0.0**
-- Version code: **20**
-- Package: `com.andrei.nfcpeople`
-- SHA-256: `5f90b06f2995bb69444f5cfd151fc0e6faf70cf378166092c0a652a56953b085`
-- Footer: `Version 2.0.0 • © andreimariuspetre`
-
-### v2.0.0 features
-
-- NFC tags continue to append directly to the active live list.
-- **Add manually** adds a person to that same list with the current timestamp.
-- Manual entries can be edited before the session is finalized.
-- NFC-scanned and manual entries can both be deleted before finalization.
-- Deletion always requires **two explicit confirmations**.
-- Deleting a scanned row clears its short repeat guard so that tag can be scanned again immediately.
-- Excel exports include a **Source** column:
-  - `Scan` for NFC entries
-  - `Manual` for manually entered people
-- Excel rows remain sorted alphabetically by person name using Romanian-aware, case-insensitive sorting.
-- Existing scan timestamps are preserved.
-- Finalized sessions remain read-only.
-- Existing NFC vibration, rapid different-tag reads, session persistence, empty-session closing, RoB branding and responsive/Fold layouts are preserved.
-
-[Download v2.0.0 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.0-source.zip)
-
-## NFC to Excel tag reader
-
-The generic Google Play variant remains separate and is not changed by this RoB v2.0.0 publication.
-
-## Privacy and support
-
-- [RoB privacy policy](PRIVACY.md)
-- [RoB support](SUPPORT.md)
-- [Generic privacy policy](PRIVACY_NFC_TO_EXCEL.md)
-- [Generic support](SUPPORT_NFC_TO_EXCEL.md)
-
-## Installation
-
-Download the APK on Android, open it, allow installation from the browser/file manager if Android requests it, and install it over the previous RoB version. The package and signing identity are unchanged, so existing RoB app data is preserved.
-EOF
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add download source README.md
+          git add download source
           git commit -m "Publish RoB NFC tag reader v2.0.0"
           git push
