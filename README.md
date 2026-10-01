@@ -7,42 +7,47 @@ This repository provides two Android variants built from the same NFC session an
 Customized for Runners of Bucharest:
 
 - RoB name and logo
-- Excel rows sorted alphabetically by the NFC person name
+- NFC reads and manual entries share the same active-session list
+- Excel rows sorted alphabetically by the person name
 - Romanian-aware, case-insensitive sorting
 - Package: `com.andrei.nfcpeople`
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-[Version-specific RoB v1.8.1 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.8.1.apk)
+[Version-specific RoB v1.9.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v1.9.0.apk)
 
 The previously shared `NFC-People-Logger-latest.apk` URL is retained and downloads the same current RoB APK.
+
+### RoB current version
+
+- Version: **1.9.0**
+- Version code: **11**
+- SHA-256: `bb1913098742c1b887bb6d8f04e83db8cef2c4725889a54e7a39831867b91e03`
+- Footer: `Version 1.9.0 • © andreimariuspetre`
 
 ## 2. NFC to Excel tag reader
 
 Generic version prepared for public distribution and Google Play:
 
 - generic NFC-to-Excel name and logo
+- NFC reads and manual entries share the same active-session list
 - Excel rows retained in chronological/original scan order
 - separate package so it can coexist with the RoB app
 - Package: `com.andrei.nfctoexceltagreader`
 
-[**Download NFC to Excel tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/NFC-to-Excel-tag-reader-latest.apk)
+The Google Play candidate has been advanced to **v1.9.0 / versionCode 11**. The standalone GitHub APK link below remains the prior public sideload build until the generic v1.9.0 APK is republished there.
 
-[Version-specific generic v1.8.1 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/NFC-to-Excel-tag-reader-v1.8.1.apk)
+[**Download currently published generic APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/NFC-to-Excel-tag-reader-latest.apk)
 
-## Current version
+## Changes in v1.9.0
 
-Both variants are currently **v1.8.1** and show this footer on every app screen:
-
-`Version 1.8.1 • © andreimariuspetre`
-
-### RoB APK verification
-
-- SHA-256: `5f22dd0d991381a21db9943b8840c9857b258498bbbd09fb4909217f2af60986`
-
-### Generic APK verification
-
-- SHA-256: `3dd485b6d26d844563e1b83111443227ed4a40a99bf4bbe35b3c09c5579c8c33`
+- Added **Add manually** on the active reading screen.
+- A manually entered person is inserted immediately into the same list and counter as NFC scans.
+- Manual entries use the current timestamp and are included in review/history and Excel export.
+- No separate manual-attendance list is needed.
+- Existing NFC reading, vibration feedback, duplicate-tag handling, empty-session closure and session persistence are preserved.
+- RoB retains alphabetical Excel export.
+- NFC to Excel retains chronological/original scan-order export.
 
 ## Installation
 
