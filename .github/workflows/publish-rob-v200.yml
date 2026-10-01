@@ -1,0 +1,94 @@
+name: Publish RoB v2.0.0
+
+on:
+  push:
+    paths:
+      - .github/workflows/publish-rob-v200.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated v2.0.0 artifact
+        run: |
+          set -euxo pipefail
+          curl -L --fail --retry 3 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-816c-81f4-b2ed-24f648e4d3d5/raw?se=2026-10-01T14%3A46%3A09Z&sp=r&sv=2026-02-06&sr=b&scid=82e119b1-11d3-5c1d-af9c-3c36fe7e7a6d&skoid=a0b9f82a-c86e-4064-a822-2aa38890bb37&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-01T13%3A46%3A02Z&ske=2026-10-02T13%3A46%3A02Z&sks=b&skv=2026-02-06&sig=UcxUYteBMUaR7JIkfQ9iJq3LvpicCegVNLbV9Z%2BoNZU%3D' -o /tmp/rob-v200.zip
+          mkdir -p /tmp/rob-v200
+          unzip -q /tmp/rob-v200.zip -d /tmp/rob-v200
+          echo '5f90b06f2995bb69444f5cfd151fc0e6faf70cf378166092c0a652a56953b085  /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0.apk' | sha256sum -c -
+          echo '1bd1f712f5f47a40459d3044e6c632a1026afdefb109dcc927577aa178644bd2  /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0-source.zip' | sha256sum -c -
+
+      - name: Publish stable and versioned downloads
+        run: |
+          set -euxo pipefail
+          mkdir -p download source
+          cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0.apk download/RoB-NFC-tag-reader-v2.0.0.apk
+          cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0.apk download/RoB-NFC-tag-reader-latest.apk
+          cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0.apk download/NFC-People-Logger-latest.apk
+          cp /tmp/rob-v200/RoB-NFC-tag-reader-v2.0.0-source.zip source/RoB-NFC-tag-reader-v2.0.0-source.zip
+
+          cat > README.md <<'EOF'
+# NFC tag reader applications
+
+## RoB NFC tag reader
+
+Customized for Runners of Bucharest.
+
+[**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
+
+[Version-specific RoB v2.0.0 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.0.apk)
+
+The legacy `NFC-People-Logger-latest.apk` URL is retained and downloads the same current RoB APK.
+
+### Current RoB version
+
+- Version: **2.0.0**
+- Version code: **20**
+- Package: `com.andrei.nfcpeople`
+- SHA-256: `5f90b06f2995bb69444f5cfd151fc0e6faf70cf378166092c0a652a56953b085`
+- Footer: `Version 2.0.0 • © andreimariuspetre`
+
+### v2.0.0 features
+
+- NFC tags continue to append directly to the active live list.
+- **Add manually** adds a person to that same list with the current timestamp.
+- Manual entries can be edited before the session is finalized.
+- NFC-scanned and manual entries can both be deleted before finalization.
+- Deletion always requires **two explicit confirmations**.
+- Deleting a scanned row clears its short repeat guard so that tag can be scanned again immediately.
+- Excel exports include a **Source** column:
+  - `Scan` for NFC entries
+  - `Manual` for manually entered people
+- Excel rows remain sorted alphabetically by person name using Romanian-aware, case-insensitive sorting.
+- Existing scan timestamps are preserved.
+- Finalized sessions remain read-only.
+- Existing NFC vibration, rapid different-tag reads, session persistence, empty-session closing, RoB branding and responsive/Fold layouts are preserved.
+
+[Download v2.0.0 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.0-source.zip)
+
+## NFC to Excel tag reader
+
+The generic Google Play variant remains separate and is not changed by this RoB v2.0.0 publication.
+
+## Privacy and support
+
+- [RoB privacy policy](PRIVACY.md)
+- [RoB support](SUPPORT.md)
+- [Generic privacy policy](PRIVACY_NFC_TO_EXCEL.md)
+- [Generic support](SUPPORT_NFC_TO_EXCEL.md)
+
+## Installation
+
+Download the APK on Android, open it, allow installation from the browser/file manager if Android requests it, and install it over the previous RoB version. The package and signing identity are unchanged, so existing RoB app data is preserved.
+EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add download source README.md
+          git commit -m "Publish RoB NFC tag reader v2.0.0"
+          git push
