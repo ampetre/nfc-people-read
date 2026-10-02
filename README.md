@@ -15,12 +15,14 @@ The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current R
 ### Current RoB version
 
 - Version: **2.0.5**
-- Internal version code: **26**
+- Internal version code: **27**
 - Package: `com.andrei.nfcpeople`
-- SHA-256: `2a3ac1d1eb98fb7d411cf25da3a1510e99f7b5213f6cbc333c37fb0ca4e515b0`
+- SHA-256: `1786c3ae855421708151d5575bdd5ca52737f7b7c8ae08853b46393b2a98df00`
 - Footer: `Version 2.0.5 • © andreimariuspetre`
 
-### v2.0.5 change
+### v2.0.5 corrected build
+
+A deletion crash in the first v2.0.5 build has been fixed. The app now collects the remaining row IDs, closes the SQLite cursor, and only then renumbers the remaining entries. This avoids modifying the `scans` table while iterating an active cursor.
 
 After deleting an entry, the remaining entries in that session are immediately renumbered so the sequence stays contiguous.
 
@@ -48,7 +50,7 @@ Only the sequence number is changed. Names, timestamps, Scan/Manual source, row 
 ### Upgrade compatibility
 
 - v2.0.4: versionCode **25**
-- v2.0.5: versionCode **26**
+- v2.0.5 corrected build: versionCode **27**
 
 Both use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.5 installs directly over v2.0.4 and earlier RoB releases without uninstalling.
 
