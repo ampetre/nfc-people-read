@@ -14,40 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Unpack published source
+      - name: Inspect published v2.0.6 source
         run: |
           set -euxo pipefail
           rm -rf /tmp/rob-src
           mkdir -p /tmp/rob-src
           unzip -q source/RoB-NFC-tag-reader-v2.0.6-source.zip -d /tmp/rob-src
-          find /tmp/rob-src -maxdepth 3 -type f | sort | head -100
-
-      - name: Inspect deletion and sequence code
-        run: |
-          set -euxo pipefail
-          echo '=== deletion / sequence references ==='
-          grep -RniE 'delete|sequence_number|sequence([^_A-Za-z0-9]|$)' /tmp/rob-src \
-            --include='*.kt' --include='*.java' --include='*.sql' \
-            | head -300 || true
-          echo '=== suspicious literal SQL column sequence ==='
-          if grep -RniE '(^|[^A-Za-z0-9_])sequence([^_A-Za-z0-9]|$)' /tmp/rob-src \
-            --include='*.kt' --include='*.java' --include='*.sql'; then
-            echo 'FOUND_BARE_SEQUENCE_REFERENCE'
-          else
-            echo 'NO_BARE_SEQUENCE_REFERENCE'
-          fi
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Compile published source
-        run: |
-          set -euxo pipefail
-          ROOT="$(find /tmp/rob-src -name gradlew -type f -printf '%h\n' | head -1)"
-          test -n "$ROOT"
-          cd "$ROOT"
-          chmod +x gradlew
-          ./gradlew --no-daemon clean assembleDebug --stacktrace
+          echo '=== AppDatabase deleteScan ==='
+          sed -n '120,190p' /tmp/rob-src/app/src/main/java/com/andrei/nfcpeople/AppDatabase.java
+          echo '=== MainActivity delete confirmation ==='
+          sed -n '600,645p' /tmp/rob-src/app/src/main/java/com/andrei/nfcpeople/MainActivity.java
+          echo '=== root build.gradle.kts ==='
+          cat /tmp/rob-src/build.gradle.kts
+          echo '=== settings.gradle.kts ==='
+          cat /tmp/rob-src/settings.gradle.kts
+          echo '=== app/build.gradle.kts ==='
+          cat /tmp/rob-src/app/build.gradle.kts
+          echo '=== source tree ==='
+          find /tmp/rob-src -maxdepth 4 -type f | sort | head -200
