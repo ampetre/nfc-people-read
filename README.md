@@ -8,29 +8,27 @@ Customized for Runners of Bucharest.
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-[Version-specific RoB v2.0.5 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.5.apk)
+[Version-specific RoB v2.0.6 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.6.apk)
 
 The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current RoB APK.
 
 ### Current RoB version
 
-- Version: **2.0.5**
-- Internal version code: **27**
+- Version: **2.0.6**
+- Internal version code: **28**
 - Package: `com.andrei.nfcpeople`
-- SHA-256: `1786c3ae855421708151d5575bdd5ca52737f7b7c8ae08853b46393b2a98df00`
-- Footer: `Version 2.0.5 • © andreimariuspetre`
+- SHA-256: `ec9c692dd799aff928a00d5526bdef330985734831afcbdb63fb4fcf6d0c82a6`
+- Footer: `Version 2.0.6 • © andreimariuspetre`
 
-### v2.0.5 corrected build
+### v2.0.6 deletion fix
 
-A deletion crash in the first v2.0.5 build has been fixed. The app now collects the remaining row IDs, closes the SQLite cursor, and only then renumbers the remaining entries. This avoids modifying the `scans` table while iterating an active cursor.
+The remaining deletion crash in v2.0.5 was caused by a concrete SQLite column-name mismatch in the renumbering code. The database schema uses `sequence_number`, but the deletion renumbering path incorrectly referenced `sequence`.
 
-After deleting an entry, the remaining entries in that session are immediately renumbered so the sequence stays contiguous.
+v2.0.6 now uses `sequence_number` consistently for both ordering and updates. After deleting a row, remaining entries are renumbered contiguously.
 
 Example:
 
-`1, 2, 3` → delete entry `1` → remaining entries become `1, 2`, not `2, 3`.
-
-Only the sequence number is changed. Names, timestamps, Scan/Manual source, row IDs and session data are preserved.
+`1, 2, 3` → delete entry `1` → remaining entries become `1, 2`.
 
 ### Existing behavior preserved
 
@@ -49,16 +47,16 @@ Only the sequence number is changed. Names, timestamps, Scan/Manual source, row 
 
 ### Upgrade compatibility
 
-- v2.0.4: versionCode **25**
-- v2.0.5 corrected build: versionCode **27**
+- v2.0.5: versionCode **27**
+- v2.0.6: versionCode **28**
 
-Both use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.5 installs directly over v2.0.4 and earlier RoB releases without uninstalling.
+Both use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.6 installs directly over v2.0.5 and earlier RoB releases without uninstalling.
 
-[Download RoB v2.0.5 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.5-source.zip)
+[Download RoB v2.0.6 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.6-source.zip)
 
 ## NFC to Excel tag reader
 
-The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.5 release.
+The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.6 release.
 
 ## Privacy and support
 
