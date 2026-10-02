@@ -35,7 +35,12 @@ jobs:
         with:
           gradle-version: '9.5.0'
 
-      - name: Compile published source
+      - name: Generate temporary audit keystore
+        run: |
+          set -euxo pipefail
+          keytool -genkeypair -noprompt             -keystore /tmp/rob-src/app/nfc-people-test.jks             -storepass nfcpeople-test-2026             -keypass nfcpeople-test-2026             -alias nfcpeople             -keyalg RSA             -keysize 2048             -validity 3650             -dname "CN=RoB Build Audit,O=Audit,C=RO"
+
+      - name: Compile and package published source
         run: |
           set -euxo pipefail
           cd /tmp/rob-src
