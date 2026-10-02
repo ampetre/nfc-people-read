@@ -8,33 +8,38 @@ Customized for Runners of Bucharest.
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-[Version-specific RoB v2.0.3 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.3.apk)
+[Version-specific RoB v2.0.4 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.4.apk)
 
 The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current RoB APK.
 
 ### Current RoB version
 
-- Version: **2.0.3**
-- Internal version code: **24**
+- Version: **2.0.4**
+- Internal version code: **25**
 - Package: `com.andrei.nfcpeople`
-- SHA-256: `5c8aeafa2eff386ab678fe4be826a2919483eb61d3822fce000cc567eb7496fb`
-- Footer: `Version 2.0.3 • © andreimariuspetre`
+- SHA-256: `d2aa95d7ee2ad876bf90c6a3114ad3fb74a152a0caa7b718c62c4166f338ddef`
+- Footer: `Version 2.0.4 • © andreimariuspetre`
 
-### v2.0.3 change
+### v2.0.4 change
 
-- The Excel workbook title in row 1 is now:
-  **RoB presence list — DD.MM.YYYY**
-- The date is the date of the session/list.
-- The previous **NFC People** wording is removed.
+Each editable list row now includes its own small contextual guide below the timestamp:
+
+- NFC scan: **Hold for delete entry**
+- Manual entry: **Hold for edit or delete entry**
+
+The hint is rendered smaller and in the secondary-text color so it remains visible without dominating the list. The old generic long-press instruction above the list was removed.
+
+Non-finalized review lists show the same hints. Finalized/read-only history does not show action hints.
 
 ### Existing behavior preserved
 
-- Single tap on a row does nothing.
+- Single tap on an entry does nothing.
 - Long press opens entry actions.
 - Manual rows show **EDIT NAME** and **DELETE ENTRY**.
 - NFC rows show **DELETE ENTRY**.
 - Manual Add/Edit uses Android word capitalization and autocorrect.
 - Deletion uses one confirmation with the selected name bolded.
+- Excel workbook title is **RoB presence list — DD.MM.YYYY**, using the session/list date.
 - Excel contains a **Source** column with `Scan` or `Manual`.
 - RoB Excel output remains Romanian-aware, case-insensitive alphabetical order.
 - Original date/time stays attached to each entry.
@@ -44,16 +49,16 @@ The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current R
 ### Upgrade compatibility
 
 - v1.8.1: versionCode **10**
-- v2.0.2: versionCode **23**
 - v2.0.3: versionCode **24**
+- v2.0.4: versionCode **25**
 
-All use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.3 installs directly over earlier RoB versions without uninstalling and preserves existing app data.
+All use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.4 installs directly over the earlier RoB versions without uninstalling and preserves existing app data.
 
-[Download RoB v2.0.3 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.3-source.zip)
+[Download RoB v2.0.4 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.4-source.zip)
 
 ## NFC to Excel tag reader
 
-The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.3 release.
+The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.4 release.
 
 ## Privacy and support
 
