@@ -1,0 +1,39 @@
+name: Publish RoB v2.0.5
+
+on:
+  push:
+    paths:
+      - .github/workflows/publish-rob-v205.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified v2.0.5 artifact
+        run: |
+          set -euxo pipefail
+          curl -L --fail --retry 3 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-096c-8210-8712-0259b20fc3b2/raw?se=2026-10-02T05%3A33%3A53Z&sp=r&sv=2026-02-06&sr=b&scid=dfe7005a-6546-53cd-ac9d-c18f536c5bb2&skoid=a0b9f82a-c86e-4064-a822-2aa38890bb37&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-02T05%3A13%3A04Z&ske=2026-10-03T05%3A13%3A04Z&sks=b&skv=2026-02-06&sig=ZTo9zsrYlEDnWLa24H9ze3bElT97wMDii79slnY7cfw%3D' -o /tmp/rob-v205.zip
+          mkdir -p /tmp/rob-v205
+          unzip -q /tmp/rob-v205.zip -d /tmp/rob-v205
+          echo '2a3ac1d1eb98fb7d411cf25da3a1510e99f7b5213f6cbc333c37fb0ca4e515b0  /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5.apk' | sha256sum -c -
+          echo '84a520d4eead891be609917eb17b75e6fe3bbd0f4ede86a85cd0efbb4894e92c  /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5-source.zip' | sha256sum -c -
+
+      - name: Publish stable and versioned downloads
+        run: |
+          set -euxo pipefail
+          mkdir -p download source
+          cp /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5.apk download/RoB-NFC-tag-reader-v2.0.5.apk
+          cp /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5.apk download/RoB-NFC-tag-reader-latest.apk
+          cp /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5.apk download/NFC-People-Logger-latest.apk
+          cp /tmp/rob-v205/RoB-NFC-tag-reader-v2.0.5-source.zip source/RoB-NFC-tag-reader-v2.0.5-source.zip
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add download source
+          git commit -m "Publish RoB NFC tag reader v2.0.5"
+          git push
