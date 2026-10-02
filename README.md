@@ -8,57 +8,55 @@ Customized for Runners of Bucharest.
 
 [**Download RoB NFC tag reader — latest APK**](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-latest.apk)
 
-[Version-specific RoB v2.0.4 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.4.apk)
+[Version-specific RoB v2.0.5 APK](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/download/RoB-NFC-tag-reader-v2.0.5.apk)
 
 The legacy `NFC-People-Logger-latest.apk` URL downloads the exact same current RoB APK.
 
 ### Current RoB version
 
-- Version: **2.0.4**
-- Internal version code: **25**
+- Version: **2.0.5**
+- Internal version code: **26**
 - Package: `com.andrei.nfcpeople`
-- SHA-256: `d2aa95d7ee2ad876bf90c6a3114ad3fb74a152a0caa7b718c62c4166f338ddef`
-- Footer: `Version 2.0.4 • © andreimariuspetre`
+- SHA-256: `2a3ac1d1eb98fb7d411cf25da3a1510e99f7b5213f6cbc333c37fb0ca4e515b0`
+- Footer: `Version 2.0.5 • © andreimariuspetre`
 
-### v2.0.4 change
+### v2.0.5 change
 
-Each editable list row now includes its own small contextual guide below the timestamp:
+After deleting an entry, the remaining entries in that session are immediately renumbered so the sequence stays contiguous.
 
-- NFC scan: **Hold for delete entry**
-- Manual entry: **Hold for edit or delete entry**
+Example:
 
-The hint is rendered smaller and in the secondary-text color so it remains visible without dominating the list. The old generic long-press instruction above the list was removed.
+`1, 2, 3` → delete entry `1` → remaining entries become `1, 2`, not `2, 3`.
 
-Non-finalized review lists show the same hints. Finalized/read-only history does not show action hints.
+Only the sequence number is changed. Names, timestamps, Scan/Manual source, row IDs and session data are preserved.
 
 ### Existing behavior preserved
 
 - Single tap on an entry does nothing.
 - Long press opens entry actions.
-- Manual rows show **EDIT NAME** and **DELETE ENTRY**.
-- NFC rows show **DELETE ENTRY**.
+- NFC rows show **Hold for delete entry**.
+- Manual rows show **Hold for edit or delete entry**.
+- Manual rows offer **EDIT NAME** and **DELETE ENTRY**.
+- NFC rows offer **DELETE ENTRY**.
 - Manual Add/Edit uses Android word capitalization and autocorrect.
 - Deletion uses one confirmation with the selected name bolded.
-- Excel workbook title is **RoB presence list — DD.MM.YYYY**, using the session/list date.
+- Excel title is **RoB presence list — DD.MM.YYYY**, using the session/list date.
 - Excel contains a **Source** column with `Scan` or `Manual`.
 - RoB Excel output remains Romanian-aware, case-insensitive alphabetical order.
-- Original date/time stays attached to each entry.
-- NFC repeat protection, rapid reads of different tags, vibration behavior, live counter, pause/resume, session persistence, empty-session closure, Excel compatibility, RoB branding and responsive/Fold layouts remain unchanged.
-- Finalized sessions remain read-only.
+- NFC repeat protection, vibration, live counter, pause/resume, session persistence, empty-session closure, responsive/Fold layouts and finalized-session read-only behavior remain unchanged.
 
 ### Upgrade compatibility
 
-- v1.8.1: versionCode **10**
-- v2.0.3: versionCode **24**
 - v2.0.4: versionCode **25**
+- v2.0.5: versionCode **26**
 
-All use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.4 installs directly over the earlier RoB versions without uninstalling and preserves existing app data.
+Both use package `com.andrei.nfcpeople` and the same signing certificate, so v2.0.5 installs directly over v2.0.4 and earlier RoB releases without uninstalling.
 
-[Download RoB v2.0.4 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.4-source.zip)
+[Download RoB v2.0.5 source](https://raw.githubusercontent.com/ampetre/nfc-people-read/main/source/RoB-NFC-tag-reader-v2.0.5-source.zip)
 
 ## NFC to Excel tag reader
 
-The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.4 release.
+The generic Google Play variant is maintained separately and was not changed by this RoB v2.0.5 release.
 
 ## Privacy and support
 
